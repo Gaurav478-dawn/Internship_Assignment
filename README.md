@@ -72,3 +72,6 @@ The program outputs a comprehensive dashboard featuring:
     * **Spread Trajectory:** A multi-line chart comparing Confirmed, Active, and Death counts over time.
     * **Mortality Rate:** A filled area chart displaying the fluctuation of the mortality percentage.
     * **Dynamic KPIs:** Summary boxes that update instantly based on the selected country and date range.
+
+### **Project Link**
+**Kaggle Link:** [https://www.kaggle.com/code/gaurav813/gaurav-denvy-assignment](https://www.kaggle.com/code/gaurav813/gaurav-denvy-assignment)
