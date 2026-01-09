@@ -1,77 +1,123 @@
-# Project Submission: Disease Spread/ Covid Analysis
+# Disease Spread/COVID-19 Analysis
 
-**Name:** Gaurav Khadka
-**Domain:** AI in HealthCare
+**Name:** Gaurav Khadka  
+**Domain:** AI in Healthcare  
+**Organization:** Denvey EduGrow  
+**Topic:** Disease Spread/COVID Analysis
 
-## Project Title
-Interactive COVID-19 Analytics Dashboard
+---
 
-## Problem Statement
-The COVID-19 pandemic generated a massive volume of time-series data across the globe. Static reports often fail to capture the dynamic nature of the disease's spread, making it difficult to analyze infection rates, recovery progress, and mortality trends over specific timeframes. There is a critical need for an interactive tool that enables users to filter data by date and region to gain actionable insights into the pandemic's trajectory.
+## 1. Project Overview
 
-## Objective
-The primary objective of this project is to develop a fluid, interactive dashboard using Python that allows users to:
-1.  Visualize the global progression of the pandemic including Confirmed, Active, Recovered, and Death counts.
-2.  Perform granular analysis on specific nations to understand local disease trajectories.
-3.  Compare infection spread against mortality rates using dynamic, togglable charts.
-4.  Provide a user-friendly interface with sliders and dropdowns for data exploration without requiring code modifications.
+This project is an **Interactive Analytics & Prediction System** designed to analyze the global spread of COVID-19 and forecast future infection trends using Artificial Intelligence.
 
-## Dataset Description
-The project utilizes the **Novel Corona Virus 2019 Dataset**, specifically the `covid_19_data.csv` file. Key features include:
-* **ObservationDate:** The date of the data record.
-* **Province/State:** The state or province level detail (if available).
-* **Country/Region:** The country level detail.
-* **Confirmed:** Cumulative number of confirmed cases.
-* **Deaths:** Cumulative number of deaths.
-* **Recovered:** Cumulative number of recovered cases.
+The system bridges the gap between **descriptive analytics** (what happened) and **predictive modeling** (what will happen). It provides stakeholders with a fluid dashboard to visualize historical data and uses Machine Learning (Linear Regression) to predict confirmed cases for the upcoming 15 days.
 
-*Note: Feature engineering was applied to calculate "Active" cases (Confirmed - Deaths - Recovered) and "Mortality Rate" ((Deaths / Confirmed) * 100).*
+---
 
-## Methodology / Approach
-1.  **Data Ingestion & Cleaning:**
-    * Loaded raw CSV data using Pandas.
-    * Converted dates to datetime objects for accurate time-series plotting.
-    * Standardized country names (e.g., handling 'Mainland China') to ensure consistent aggregation.
-2.  **Feature Engineering:**
-    * Calculated 'Active Cases' to provide a more accurate picture of current strain on healthcare systems.
-    * Computed 'Mortality Rate' percentages for trend analysis.
-3.  **UI & Interaction Design:**
-    * Developed a "Fluid UI" layout using `ipywidgets` to create a seamless user experience within the notebook.
-    * Implemented toggle buttons to switch views between Global and Nation analysis to reduce visual clutter.
-    * Created dynamic HTML "KPI Cards" to display summary statistics prominently.
-4.  **Visualization:**
-    * Utilized **Plotly** for rendering interactive line and area charts that support zooming and hovering.
+## 2. Key Features
 
-## Tools & Technologies Used
-* **Python:** Core programming language.
-* **Pandas:** For efficient data manipulation and aggregation.
-* **Plotly (Express & Graph Objects):** For creating high-quality, interactive visualizations.
-* **ipywidgets:** For building the interactive controls (Sliders, Dropdowns, Toggles) directly in the environment.
-* **Kaggle:** The development and execution environment.
+### Global Pandemic Overview
+- **Real-time Aggregation:** Displays total Confirmed, Active, Recovered, and Death counts worldwide.
+- **Trend Visualization:** Interactive line charts showing the cumulative spread of the virus over time.
+- **Top Affected Nations:** A dynamic bar chart ranking the top 10 countries by total caseload.
 
-## Steps to Run the Project
-1.  **Prerequisites:** Ensure the following Python libraries are installed:
-    ```bash
-    pip install pandas plotly ipywidgets
-    ```
-2.  **Data Setup:**
-    * Download the `covid_19_data.csv` file.
-    * Upload the file to your Google Colab session (click the folder icon on the left sidebar and drag the file in).
-3.  **Execution:**
-    * Copy the provided Python code into a code cell.
-    * Run the cell.
-4.  **Usage:**
-    * **Select View:** Use the toggle buttons to switch between "Global" and "Nation" modes.
-    * **Filter Date:** Drag the slider to adjust the time range for the analysis.
-    * **Analyze Nation:** In "Nation" mode, select a country from the dropdown. Use the Chart toggle to switch between "Spread Trajectory" and "Mortality Rate".
+### Nation-Specific Analysis
+- **Granular Filtering:** Allows users to select specific countries (e.g., US, India, Italy) for detailed analysis.
+- **Spread Trajectory:** Visualizes the "Active Case" curve to identify waves and peaks.
+- **Mortality Rate Analysis:** Tracks the efficiency of healthcare responses by calculating the death-to-case ratio over time.
 
-## Results / Output
-The program outputs a comprehensive dashboard featuring:
-* **Global Overview:** A trend line showing the accumulation of cases worldwide and summary cards for total metrics.
-* **Nation Analysis:**
-    * **Spread Trajectory:** A multi-line chart comparing Confirmed, Active, and Death counts over time.
-    * **Mortality Rate:** A filled area chart displaying the fluctuation of the mortality percentage.
-    * **Dynamic KPIs:** Summary boxes that update instantly based on the selected country and date range.
+### AI Prediction (Machine Learning)
+- **Model:** Linear Regression (Supervised Learning)
+- **Function:** Trains on historical country data to learn the infection rate
+- **Output:** Forecasts the trajectory of Confirmed Cases for the next 15 days
+- **Visualization:** Plots the predicted trend line against historical data for easy comparison
+
+---
+
+## 3. Technology Stack
+
+- **Language:** Python 3.x
+- **Web Framework:** Streamlit
+- **Data Manipulation:** Pandas, NumPy
+- **Visualization:** Plotly Express, Plotly Graph Objects
+- **Machine Learning:** Scikit-Learn (Linear Regression)
+
+---
+
+## 4. File Structure
+
+```
+project/
+│
+├── app.py                  # Main application source code (UI logic and ML implementation)
+├── covid_19_data.csv       # Time-series dataset (Source: JHU CSSE)
+├── requirements.txt        # Python dependencies
+└── README.md              # Project documentation
+```
+
+---
+
+## 5. Installation and Execution
+
+### Prerequisites
+Ensure **Python 3.7 or higher** is installed on your system.
+
+### Step 1: Install Dependencies
+Open your terminal or command prompt in the project directory and run:
+
+```bash
+pip install streamlit pandas numpy plotly scikit-learn
+```
+
+### Step 2: Run the Application
+Execute the following command to launch the web interface:
+
+```bash
+streamlit run app.py
+```
+
+The application will automatically open in your default web browser at `http://localhost:8501`.
+
+---
+
+## 6. Methodology
+
+### Data Preprocessing
+- The raw dataset is cleaned, and dates are converted to datetime objects
+- A new feature, "Active Cases," is engineered by subtracting Deaths and Recovered cases from Confirmed cases
+
+### Exploratory Data Analysis (EDA)
+- The system aggregates daily records to visualize trends
+- Mortality rates are calculated dynamically based on user selection
+
+### Predictive Modeling
+- The system uses Scikit-Learn to train a Linear Regression model on the chronological progression of cases (Time vs. Confirmed)
+- This model extrapolates the trend line for future dates to estimate upcoming caseloads
+
+---
+
+## 7. Disclaimer
+
+ **Important:** This tool is intended for **educational and analytical purposes**. The predictions generated by the Linear Regression model are based on historical trends and simple linear growth assumptions; they should **not** be used as the sole basis for medical or policy decisions without consulting complex epidemiological models.
+
+---
+
+## Dataset Source
+
+**Johns Hopkins University CSSE** - COVID-19 Data Repository
+
+---
+
+## Contact
+
+For questions or feedback regarding this project, please contact:
+
+**Gaurav Khadka**  
+Denvey EduGrow  
+Roll No:242025107
+Registration No:2415136
+Domain: AI in Healthcare
 
 ### **Project Link**
-**Kaggle Link:** [https://www.kaggle.com/code/gaurav813/gaurav-denvy-assignment](https://www.kaggle.com/code/gaurav813/gaurav-denvy-assignment)
+**Live Web App:** [https://covid-analysis-ai.streamlit.app](https://internshipassignment-jxzhh9ukgtnm3pykhd2c8k.streamlit.app/)
