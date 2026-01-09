@@ -47,7 +47,7 @@ The project utilizes the **Novel Corona Virus 2019 Dataset**, specifically the `
 * **Pandas:** For efficient data manipulation and aggregation.
 * **Plotly (Express & Graph Objects):** For creating high-quality, interactive visualizations.
 * **ipywidgets:** For building the interactive controls (Sliders, Dropdowns, Toggles) directly in the environment.
-* **Google Colab:** The development and execution environment.
+* **Kaggle:** The development and execution environment.
 
 ## Steps to Run the Project
 1.  **Prerequisites:** Ensure the following Python libraries are installed:
